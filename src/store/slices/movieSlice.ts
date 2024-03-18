@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice, isRejected} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
 import {IMovie, IMovieRes} from "../../interfaces";
-import {movieDBServices} from "../../services/movieDBServices";
+import {movieDBServices} from "../../services";
 
 
 interface IState  {
