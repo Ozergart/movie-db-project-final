@@ -20,7 +20,9 @@ const getAll = createAsyncThunk<IMovie,void>(
     "movieSlice/getAll",
     async (_,{rejectWithValue})=>{
         try {
+            console.log('2');
             const {data} =  await movieDBServices.getAll()
+            console.log(data);
             return  data
 
         }catch (e) {
@@ -40,7 +42,7 @@ const movieSlice = createSlice({
             state.answer = action.payload
             state.Movies = action.payload.results
         })
-        .addMatcher(isRejected(getAll),(state, action) => {
+        .addMatcher(isRejected(getAll),(state) => {
             state.error = "Помишка у пошуку"
         })
 })

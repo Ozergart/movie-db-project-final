@@ -1,15 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,} from 'react';
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {MovieActions} from "../../store";
 import {Movie} from "./Movie";
+
 
 const Movies = () => {
 
     const dispatch = useAppDispatch();
     const {Movies} = useAppSelector(state => state.movies);
+    console.log('start');
 
     useEffect(() => {
-        dispatch(MovieActions.getAll)
+        dispatch(MovieActions.getAll())
     }, []);
 
     return (
