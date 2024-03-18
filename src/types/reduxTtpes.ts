@@ -2,4 +2,9 @@ import {store} from "../store";
 
 
 type stateType = ReturnType<typeof store.getState>
-ty
+type dispatchType = typeof store.dispatch
+
+export type{
+    stateType,
+    dispatchType
+}
