@@ -1,11 +1,14 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {IMovie, IMovieRes} from "../../interfaces";
 
 interface IState  {
-
+    answer:IMovie
+    Movies:IMovieRes
 }
 
 const initialState:IState = {
-
+    answer:null,
+    Movies:[]
 }
 
 const movieSlice = createSlice({
