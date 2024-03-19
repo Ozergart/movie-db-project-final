@@ -1,0 +1,33 @@
+.User{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    font-size: 30px;
+    color: white;
+}
+.User img{
+    height: 70px;
+    border-radius: 50px;
+    margin: 10px;
+}
+.id{
+    font-size: 12px;
+}
+.UserDark{
+    color: rgb(255, 195, 103);
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    font-size: 30px;
+}
+.UserDark img{
+    height: 70px;
+    border-radius: 50px;
+    margin: 10px;
+}
+.User:hover{
+    cursor: default;
+}
+.UserDark:hover{
+    cursor: default;
+}

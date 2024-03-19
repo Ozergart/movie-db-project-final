@@ -1,21 +1,21 @@
 import React, {useEffect,} from 'react';
+
+import css from './Movies.module.css'
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {MovieActions} from "../../store";
-import {Movie} from "./Movie";
+import {Movie} from "../MovieCont/Movie";
 
 
 const Movies = () => {
 
     const dispatch = useAppDispatch();
     const {Movies} = useAppSelector(state => state.movies);
-    console.log('start');
-
     useEffect(() => {
         dispatch(MovieActions.getAll())
     }, []);
 
     return (
-        <div>
+        <div className={css.Movies}>
             {Movies.map(movie=><Movie key={movie.id} movie={movie}/>)}
         </div>
     );

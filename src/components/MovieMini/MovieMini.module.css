@@ -1,0 +1,22 @@
+.MovieMini{
+    margin: 10px;
+    color: white;
+    background-color: #5Ab9EA;
+    padding: 10px;
+    border-radius: 30px;
+}
+.MovieMini:hover{
+    cursor: default;
+    padding: 15px;
+}
+.MovieMiniDark{
+    margin: 10px;
+    color: white;
+    background-color: rgba(10, 58, 86, 0.76);
+    padding: 10px;
+    border-radius: 30px;
+}
+.MovieMiniDark:hover{
+    cursor: default;
+    padding: 15px;
+}

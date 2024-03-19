@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.neutral{
+    background-color: rgb(128, 128, 128);
+}
+.added{
+    background-color: green;
+}
+.removed{
+    background-color: red;
+}
+.genre{
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: snow;
+    border: 2px black solid;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 15px;
+    margin:10px 20px;
+    height: 40px;
+    transition: 1s;
+}
+.genre:hover{
+    padding: 20px;
+    color: black;
+}
+.bigCont{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(193, 200, 228, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+.bigContDark{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(3, 3, 3, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+.genresSearch{
+    background: rgb(136,96,208);
+    background: radial-gradient(circle, rgba(136,96,208,1) 0%, rgba(182,179,224,0.7) 79%, rgba(188,190,226,0.6) 90%, rgba(193,200,228,0.5) 100%);
+    width: 770px;
+    height: 500px;
+    border-radius: 30px;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.genresSearchDark{
+    background: rgb(17,17,17);
+    background: radial-gradient(circle, rgba(17,17,17,1) 0%, rgba(68,68,68,1) 84%, rgba(73,73,73,0.9) 90%, rgba(77,77,77,0.8) 93%, rgba(81,81,81,0.7) 97%, rgba(84,84,84,0.7035189075630253) 100%);
+    width: 770px;
+    height: 500px;
+    border-radius: 30px;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.buttonsCont{
+    display: flex;
+    justify-content: space-around;
+}
+.buttonsCont button{
+    border: 2px black solid;
+    color: white;
+    background-color: #56809D;
+    padding: 15px;
+    border-radius: 20px;
+    font-size: 25px;
+    width: 130px;
+    transition: 1s;
+}
+.buttonsCont button:hover{
+    color: black;
+}
+.smallCont{
+    display: flex;
+    flex-wrap: wrap;
+}

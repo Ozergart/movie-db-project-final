@@ -1,0 +1,33 @@
+.Genres{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+}
+.GenresVertical{
+    display: flex;
+    flex-wrap: wrap;
+    width: 140px;
+    align-items: center;
+    flex-direction: column;
+}
+.Genre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: snow;
+    background-color: rgba(0, 128, 0, 0.8);
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 15px;
+    height: 18px;
+    transition: 0.5s;
+    text-decoration: none;
+}
+.Genre:hover{
+    color: red;
+    cursor: default;
+    padding: 7px;
+}

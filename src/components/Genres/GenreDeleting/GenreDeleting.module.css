@@ -1,0 +1,39 @@
+.cont{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+.genre{
+    padding: 10px;
+    color: white;
+    background-color: green;
+    border-radius: 20px;
+    margin: 5px;
+    cursor: default;
+    display: flex;
+    align-items: center;
+}
+.genreRed{
+    padding: 10px;
+    color: white;
+    background-color: red;
+    border-radius: 20px;
+    margin: 5px;
+    cursor: default;
+    display: flex;
+    align-items: center;
+}
+.genreRed img{
+    display: none;
+}
+.genre img{
+    display: none;
+}
+.genreRed:hover img{
+    display: flex;
+    margin-left: 8px;
+}
+.genre:hover img{
+    display: flex;
+    margin-left: 8px;
+}
