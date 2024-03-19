@@ -1,0 +1,115 @@
+.Search{
+    width: 700px;
+    height: 150px;
+    background: rgb(136,96,208);
+    background: radial-gradient(circle, rgba(136,96,208,1) 0%, rgba(182,179,224,0.7) 79%, rgba(188,190,226,0.6) 90%, rgba(193,200,228,0.5) 100%);
+    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+.SearchDark{
+    background: rgb(17,17,17);
+    background: radial-gradient(circle, rgba(17,17,17,1) 0%, rgba(45,45,45,1) 84%, rgba(68,68,68,1) 89%, rgba(73,73,73,0.9) 91%, rgba(77,77,77,0.8) 95%, rgba(81,81,81,0.7) 97%, rgba(84,84,84,0.7035189075630253) 100%);
+    width: 700px;
+    height: 150px;
+    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+.Search form, .SearchDark form{
+    display: flex;
+}
+.Cont{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: rgba(193, 200, 228, 0.9);
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    flex-direction: column ;
+}
+.ContDark{
+    background-color: rgba(3, 3, 3, 0.9);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    flex-direction: column ;
+}
+.close img{
+    width: 35px;
+    height: 35px;
+}
+.close{
+    position: absolute;
+    top: 0;
+    left: 85%;
+}
+.input{
+    height: 50px;
+    font-size: 35px;
+    border: none;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    box-sizing: border-box;
+    padding: 0 25px;
+}
+
+
+.input:focus {
+    outline: none;
+}
+.inputDark{
+    height: 50px;
+    font-size: 35px;
+    border: none;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    box-sizing: border-box;
+    padding: 0 25px;
+    color: white;
+    background-color: #5e5e5e;
+}
+
+
+.inputDark:focus {
+    outline: none;
+}
+.inputDark::placeholder{
+    color: white;
+}
+.start{
+    height: 50px;
+    width: 70px;
+    background-color: white;
+    outline: none;
+    border: none;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    transition: 2s;
+}
+.startDark{
+    height: 50px;
+    width: 70px;
+    background-color: #5e5e5e;
+    outline: none;
+    border: none;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    transition: 2s;
+}
+.start:disabled{
+    background-color: rgb(128, 128, 128);
+}
+.startDark:disabled{
+    background-color: black;
+}

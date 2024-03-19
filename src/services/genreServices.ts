@@ -22,16 +22,20 @@ const genreService = {
         const genre = allGenres.find((genre) => genre.name === name);
         return genre.id
     },
+    stringToMassive:(str:string):string[]=>{
+        return str.split(',')
+    },
+    IdsToString: (ids: string[]): string => {
+        return ids.join(',')
+    },
     paramsToString: (query: URLSearchParams, param: string): string[] => query.get(param) ? query.get(param).split(',') : [],
     genreRemoveFromURL: (id: number, query: URLSearchParams, param: string): string[] => {
         const url: string[] = genreService.paramsToString(query, param)
         const index = url.indexOf(id + '')
         url.splice(index, 1);
         return url;
-    },
-    IdsToString: (ids: string[]): string => {
-        return ids.join(',')
     }
+
 }
 
 export {

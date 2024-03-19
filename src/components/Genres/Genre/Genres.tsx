@@ -26,7 +26,6 @@ const Genres: FC<IProps> = ({genre_ids, horisontal = true}) => {
         }
         else if (genre_ids && allGenres.length > 0) {
            setGenresNames( genreService.idsToNames(genre_ids, allGenres))
-            console.log(GenresNames);
 
         } else {
             setGenresNames(["GenresError"]);

@@ -2,15 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
-// import {GenresSearch} from "../Genres/GenreSearch";
 import {User} from "../User/User";
-// import {Search} from "../Search/Search";
+import {Search} from "../Search/Search";
 import {IEvent} from "../../types";
-import {movieDBServices, themeService} from "../../services";
+import { themeService} from "../../services";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {ThemeActions} from "../../store/slices/themeSlice";
 import {MovieActions} from "../../store";
 import {MovieMini} from "../MovieMini/MovieMini";
+import {GenresSearch} from "../Genres/GenreSearch/GenresSearch";
 
 const Header = () => {
 
@@ -70,8 +70,8 @@ const Header = () => {
                     </div> : null}
             </div>
             <User/>
-            {/*{genreSearchTrigger ? <GenresSearch setGenreSearchTrigger={setGenreSearchTrigger}/> : null}*/}
-            {/*{searchTrigger ? <Search setSearchTrigger={setSearchTrigger}/> : null}*/}
+            {genreSearchTrigger ? <GenresSearch setGenreSearchTrigger={setGenreSearchTrigger}/> : null}
+            {searchTrigger ? <Search setSearchTrigger={setSearchTrigger}/> : null}
         </div>
     );
 };

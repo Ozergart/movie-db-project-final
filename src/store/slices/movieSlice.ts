@@ -20,13 +20,13 @@ const initialState:IState = {
     fastSearch:'',
     moviesSearch:[]
 }
-const getAll = createAsyncThunk<IMovie,void>(
+const getAll = createAsyncThunk<IMovie,{page:number,without_genres:string,with_genres:string}>(
     "movieSlice/getAll",
-    async (_,{rejectWithValue})=>{
+    async ({page,with_genres,without_genres},{rejectWithValue})=>{
         try {
-            console.log('2');
-            const {data} =  await movieDBServices.getAll()
-            console.log(data);
+            const {data} =  await movieDBServices.getAll(page,with_genres,without_genres)
+            console.log(with_genres);
+            console.log(without_genres);
             return  data
 
         }catch (e) {
@@ -44,6 +44,18 @@ const moviesFastSearch = createAsyncThunk<IMovie,string>(
         }catch (e) {
             const err = e as AxiosError
             rejectWithValue(err.response.data)
+        }
+    }
+)
+const movieSearch = createAsyncThunk<IMovie, { page:number, queryParam:string }>(
+    "movieSlice/movieSearch",
+    async ({page,queryParam},{rejectWithValue})=>{
+        try {
+            const {data} = await movieDBServices.search(page,queryParam);
+            return data
+        }catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response.data)
         }
     }
 )
@@ -66,6 +78,10 @@ const movieSlice = createSlice({
             state.answer = action.payload
             state.Movies = action.payload.results
         })
+        .addCase(movieSearch.fulfilled,(state, action) => {
+            state.answer = action.payload
+            state.Movies = action.payload.results
+        })
         .addCase(moviesFastSearch.fulfilled, (state, action) => {
             state.moviesSearch = action.payload.results
         })
@@ -74,7 +90,7 @@ const movieSlice = createSlice({
         })
 })
 const {reducer:MovieReducer,actions} = movieSlice
-const MovieActions = {...actions, getAll,moviesFastSearch}
+const MovieActions = {...actions, getAll,moviesFastSearch,movieSearch}
 export {
     MovieActions,
     MovieReducer

@@ -1,0 +1,39 @@
+.pageDivBig{
+    display: flex;
+    width: 30%;
+    justify-content: center;
+}
+.pageDiv{
+    display: flex;
+    padding: 20px;
+    max-height: 37px;
+
+}
+.pageDiv button{
+    text-decoration: none;
+    margin: 5px 20px;
+    cursor: default;
+    color: white;
+    background-color: purple;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: 1s;
+    border: none;
+}
+.pageDiv button:hover{
+    background-color: rgba(128, 0, 128, 0.4);
+    color: black;
+    font-weight: bold;
+}
+
+.pageDiv p{
+    background-color: red;
+    margin: 5px 20px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: default;
+}

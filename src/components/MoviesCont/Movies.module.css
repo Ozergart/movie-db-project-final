@@ -2,3 +2,41 @@
     display: flex;
     flex-wrap: wrap;
 }
+.Nothing{
+    font-size: 50px;
+    justify-self: center;
+    margin-top: 300px;
+}
+.bigCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.MovieHeader{
+    display: flex;
+    justify-content: space-between;
+}
+.sortingCont{
+    width: 35%;
+    display: flex;
+    align-items: center;
+}
+.sorting{
+    display: flex;
+    justify-self: center;
+    flex-wrap: wrap;
+}
+.sorting>p{
+    white-space: nowrap;
+    align-self: center;
+    font-size: 20px;
+    color: rgb(255, 195, 103);
+}
+.genreDeliting{
+    width: 35%;
+}
+.bottomPages{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

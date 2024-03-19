@@ -6,10 +6,14 @@ import {genreService} from "../../services";
 interface IState {
     allGenres:IGenre[];
     genres:string[];
+    genresWithout:string[];
+    genresWith:string[]
 }
 const initialState:IState = {
     allGenres:[],
-    genres:[]
+    genres:[],
+    genresWithout:[],
+    genresWith:[]
 }
 const getAllGenres = createAsyncThunk<IGenre[],void>(
     "genreSlice/getAllGenres",
@@ -29,7 +33,26 @@ const genreSlice = createSlice(
         name:"genreSlice",
         initialState,
         reducers:{
-
+            genresWithNull:(state)=>{
+                state.genresWith = []
+            },
+            genresWithoutNull:(state)=>{
+                state.genresWithout = []
+            },
+            genresWithPush:(state,action)=>{
+                state.genresWith.push(action.payload)
+            },
+            genresWithoutPush:(state,action)=>{
+                state.genresWithout.push(action.payload)
+            },
+            removeFromGenresWith: (state, action) => {
+                const stringToRemove = action.payload.toString();
+                state.genresWith = state.genresWith.filter(genre => genre !== stringToRemove);
+            },
+            removeFromGenresWithout: (state, action) => {
+                const stringToRemove = action.payload.toString();
+                state.genresWithout = state.genresWith.filter(genre => genre !== stringToRemove);
+            },
         },
         extraReducers:builder => builder
             .addCase(getAllGenres.fulfilled, (state, action) => {

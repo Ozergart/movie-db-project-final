@@ -5,8 +5,8 @@ import {MovieDetailsPage, MoviesPage} from "./pages";
 const router = createBrowserRouter([
     {path:"", element:<MainLayout/>, children:[
             {index:true, element:<Navigate to={'/movies'}/>},
-            {path:'movies', element:<MoviesPage/>},
-            {path:'movieDetails', element:<MovieDetailsPage/>}
+            {path:'movies/?page=:page&sort_by=:sort_by&idsWith=:idsWith?&idsWithout=:idsWithout?&queryParam=:queryParam?', element:<MoviesPage/>},
+            {path:'movieDetails/:movieId', element:<MovieDetailsPage/>}
         ]}
 ])
 export {

@@ -1,13 +1,16 @@
 import {apiService} from "./apiService";
 import {urls} from "../constants";
-import {IMovie} from "../interfaces";
+import {IMovie, IMovieBig} from "../interfaces";
 import {IRes} from "../types";
 
 const movieDBServices = {
-    getAll:():IRes<IMovie>=>apiService.get(urls.movies.base, {params:{
-            language:'uk',
+    byId: (id: number): IRes<IMovieBig> => apiService.get(urls.movies.byId(id), {'params': {'language': 'uk'}}),
+    getAll:(page:number,with_genres:string,without_genres:string):IRes<IMovie>=>apiService.get(urls.movies.base, {params:{
+            page,
+            with_genres,
+            without_genres,
             sort_by:"popularity.desc",
-            page:'1'
+            language:'uk'
         }}),
     search: (page: number = 1, queryParam: string): IRes<IMovie> => apiService.get(urls.movies.search, {
         'params': {
