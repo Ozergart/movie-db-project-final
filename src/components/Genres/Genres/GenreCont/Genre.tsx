@@ -1,9 +1,9 @@
 import {FC, PropsWithChildren} from 'react';
 import {Link} from "react-router-dom";
 
-import css from './Genre&Genres.module.css'
-import {genreService} from "../../../services";
-import {useAppSelector} from "../../../hooks";
+import css from './Genre.module.css'
+import {genreService} from "../../../../services";
+import {useAppSelector} from "../../../../hooks";
 
 interface IProps extends PropsWithChildren {
     genre: string

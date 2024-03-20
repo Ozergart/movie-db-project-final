@@ -1,10 +1,10 @@
 import {FC, PropsWithChildren, useEffect, useState} from 'react';
 
-import {IGenre} from "../../../interfaces";
-import css from './AllGenres.module.css'
-import {setStateType} from "../../../types";
-import {useAppDispatch, useAppSelector} from "../../../hooks";
-import {GenreActions} from "../../../store";
+import {IGenre} from "../../../../interfaces";
+import css from './GenreSearch.module.css'
+import {setStateType} from "../../../../types";
+import {useAppDispatch} from "../../../../hooks";
+import {GenreActions} from "../../../../store";
 
 interface IProps extends PropsWithChildren {
     genre: IGenre

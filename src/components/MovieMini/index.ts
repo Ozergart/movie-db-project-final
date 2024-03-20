@@ -1,0 +1,1 @@
+export * from './MovieMini.module.css'

@@ -1,0 +1,13 @@
+.Genres{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+}
+.GenresVertical{
+    display: flex;
+    flex-wrap: wrap;
+    width: 140px;
+    align-items: center;
+    flex-direction: column;
+}

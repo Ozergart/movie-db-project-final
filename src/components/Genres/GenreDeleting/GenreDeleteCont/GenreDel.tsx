@@ -1,9 +1,9 @@
 import {FC, PropsWithChildren} from 'react';
 import {useSearchParams} from "react-router-dom";
 
-import css from './GenreDeleting.module.css'
-import {genreService} from "../../../services";
-import {useAppSelector} from "../../../hooks";
+import css from "./GenreDel.module.css"
+import {genreService} from "../../../../services";
+import {useAppSelector} from "../../../../hooks";
 
 
 interface IProps extends PropsWithChildren {

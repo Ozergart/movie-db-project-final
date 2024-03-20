@@ -1,12 +1,13 @@
 import React, {useEffect,} from 'react';
+import {useSearchParams} from "react-router-dom";
 
 import css from './Movies.module.css'
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {MovieActions} from "../../store";
-import {Movie} from "../MovieCont/Movie";
-import {useSearchParams} from "react-router-dom";
-import {GenreDeleting} from "../Genres/GenreDeleting/GenreDeleting";
-import {Pagination} from "../Pagination/Pagination";
+import {Movie} from "../MovieCont";
+import {GenreDeleting} from "../Genres";
+import {Pagination} from "../Pagination";
+import {DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} from "../Sortings";
 
 
 const Movies = () => {
@@ -16,7 +17,7 @@ const Movies = () => {
         {page: '1', idsWith: '', idsWithout: '', queryParam: '', sort_by: "popularity.desc"});
 
     const pageURL: number = +query.get('page')
-    const sorting = query.get('sort_by')
+    const sort_by = query.get('sort_by')
     const queryParam: string = query.get('queryParam')
 
     const with_genres: string = query.get('idsWith')
@@ -27,10 +28,9 @@ const Movies = () => {
         if (queryParam && queryParam.length > 0) {
             dispatch(MovieActions.movieSearch({page: pageURL, queryParam,}))
         } else {
-            dispatch(MovieActions.getAll({page: pageURL, with_genres, without_genres}))
-            console.log(dispatch(MovieActions.getAll({page: pageURL, with_genres, without_genres})));
+            dispatch(MovieActions.getAll({page: pageURL, with_genres, without_genres,sort_by}))
         }
-    }, [pageURL, queryParam, with_genres, without_genres]);
+    }, [pageURL, queryParam, with_genres, without_genres,sort_by]);
 
     return (
         <div className={css.bigCont}>
@@ -42,10 +42,11 @@ const Movies = () => {
                         <Pagination pageURL={pageURL} setQuery={setQuery} result={answer}/>
                         <div className={css.sortingCont}>{!queryParam ? <div className={css.sorting}>
                             <p>Сортувати за:</p>
-                            {/*<PopularitySorting setQuery={setQuery} query={query}/>*/}
-                            {/*<RevenueSorting setQuery={setQuery} query={query}/>*/}
-                            {/*<DateSorting setQuery={setQuery} query={query}/>*/}
-                            {/*<Original_titleSorting setQuery={setQuery} query={query}/>*/}
+                            <PopularitySorting setQuery={setQuery} query={query}/>
+                            <RevenueSorting setQuery={setQuery} query={query}/>
+                            <DateSorting setQuery={setQuery} query={query}/>
+                            {/* eslint-disable-next-line react/jsx-pascal-case */}
+                            <Original_titleSorting setQuery={setQuery} query={query}/>
                         </div> : null}</div>
                     </div>
                     <div className={css.Movies}>{Movies.map(movie => <Movie key={movie.id} movie={movie}/>)}</div>

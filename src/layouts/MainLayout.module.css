@@ -1,0 +1,10 @@
+.MainLayout{
+    background: rgba(86, 128, 233, 0.75);
+    min-height: 100vh;
+    min-width: 100%;
+}
+.MainLayoutDark{
+    background: rgba(14, 16, 26 , 0.55);
+    min-height: 100vh;
+    min-width: 100%;
+}

@@ -20,13 +20,11 @@ const initialState:IState = {
     fastSearch:'',
     moviesSearch:[]
 }
-const getAll = createAsyncThunk<IMovie,{page:number,without_genres:string,with_genres:string}>(
+const getAll = createAsyncThunk<IMovie,{page:number,without_genres:string,with_genres:string,sort_by:string}>(
     "movieSlice/getAll",
-    async ({page,with_genres,without_genres},{rejectWithValue})=>{
+    async ({page,with_genres,without_genres,sort_by},{rejectWithValue})=>{
         try {
-            const {data} =  await movieDBServices.getAll(page,with_genres,without_genres)
-            console.log(with_genres);
-            console.log(without_genres);
+            const {data} =  await movieDBServices.getAll(page,with_genres,without_genres,sort_by)
             return  data
 
         }catch (e) {

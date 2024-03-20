@@ -1,0 +1,27 @@
+.neutral{
+    background-color: rgb(128, 128, 128);
+}
+.added{
+    background-color: green;
+}
+.removed{
+    background-color: red;
+}
+.genre{
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: snow;
+    border: 2px black solid;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 15px;
+    margin:10px 20px;
+    height: 40px;
+    transition: 1s;
+}
+.genre:hover{
+    padding: 20px;
+    color: black;
+}

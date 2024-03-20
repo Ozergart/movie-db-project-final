@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, } from 'react';
 
 import css from './User.module.css'
-import {IUser} from "../../interfaces";
-import {userService} from "../../services";
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {UserActions} from "../../store/slices/userSlice";
+import {UserActions} from "../../store";
 
 
 const User = () => {
@@ -13,7 +11,7 @@ const User = () => {
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(UserActions.getUser())
-    }, []);
+    }, [dispatch]);
     if(!user){
         return <p>Loading</p>
     }

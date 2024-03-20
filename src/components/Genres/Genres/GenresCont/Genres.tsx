@@ -1,11 +1,10 @@
 import {FC, PropsWithChildren, useEffect, useState} from 'react';
 
-import {genreService} from "../../../services";
-import css from './Genre&Genres.module.css'
-
-import {Genre} from "./Genre";
-import {useAppDispatch, useAppSelector} from "../../../hooks";
-import {GenreActions} from "../../../store";
+import {genreService} from "../../../../services";
+import css from './Genres.module.css'
+import {Genre} from "../GenreCont/Genre";
+import {useAppDispatch, useAppSelector} from "../../../../hooks";
+import {GenreActions} from "../../../../store";
 
 interface IProps extends PropsWithChildren {
     genre_ids: number[]

@@ -1,2 +1,6 @@
-export * from './movieSlice'
 export * from './genreSlice'
+export * from './loadingSlice'
+export * from './movieSlice'
+export * from './oneMovieSlice'
+export * from './themeSlice'
+export * from './userSlice'

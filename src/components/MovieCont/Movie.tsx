@@ -4,7 +4,7 @@ import {Rating, RoundedStar} from "@smastrom/react-rating";
 
 import {IMovieRes} from "../../interfaces";
 import css from './Movie.module.css'
-import {Genres} from "../Genres/Genre";
+import {Genres} from "../Genres";
 
 interface IProps extends PropsWithChildren {
 movie:IMovieRes

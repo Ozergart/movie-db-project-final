@@ -1,0 +1,14 @@
+.filter{
+    display: flex;
+    color: white;
+    font-size: 20px;
+    white-space: nowrap;
+}
+.filter:hover{
+    cursor: default;
+}
+.cont{
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}

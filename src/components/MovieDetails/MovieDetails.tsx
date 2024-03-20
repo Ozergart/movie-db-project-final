@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 
 import css from './MovieDetails.module.css'
 import {IMdbRes, IMovieBig} from "../../interfaces";
-import {Genres} from "../Genres/Genre";
+import {Genres} from "../Genres";
 import {genreService} from "../../services";
 import {useAppSelector} from "../../hooks";
 

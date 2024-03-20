@@ -2,15 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
-import {User} from "../User/User";
-import {Search} from "../Search/Search";
+import {User} from "../User";
+import {Search} from "../Search";
 import {IEvent} from "../../types";
 import { themeService} from "../../services";
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {ThemeActions} from "../../store/slices/themeSlice";
+import {ThemeActions} from "../../store";
 import {MovieActions} from "../../store";
 import {MovieMini} from "../MovieMini/MovieMini";
-import {GenresSearch} from "../Genres/GenreSearch/GenresSearch";
+import {GenresSearch} from "../Genres";
 
 const Header = () => {
 

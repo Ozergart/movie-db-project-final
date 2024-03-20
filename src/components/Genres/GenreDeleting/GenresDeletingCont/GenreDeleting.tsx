@@ -2,9 +2,9 @@ import {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {SetURLSearchParams} from "react-router-dom";
 
 import css from './GenreDeleting.module.css'
-import {genreService} from "../../../services";
-import {GenreDel} from "./GenreDel";
-import {useAppSelector} from "../../../hooks";
+import {genreService} from "../../../../services";
+import {GenreDel} from "../GenreDeleteCont/GenreDel";
+import {useAppSelector} from "../../../../hooks";
 
 interface IProps extends PropsWithChildren {
     query: URLSearchParams
