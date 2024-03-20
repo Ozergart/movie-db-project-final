@@ -20,10 +20,7 @@ const Genres: FC<IProps> = ({genre_ids, horisontal = true}) => {
 
 
     useEffect(() => {
-        if (allGenres.length === 0) {
-             dispatch(GenreActions.getAllGenres());
-        }
-        else if (genre_ids && allGenres.length > 0) {
+        if (genre_ids && allGenres.length > 0) {
            setGenresNames( genreService.idsToNames(genre_ids, allGenres))
 
         } else {

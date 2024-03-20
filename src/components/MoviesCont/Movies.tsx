@@ -1,5 +1,6 @@
 import React, {useEffect,} from 'react';
 import {useSearchParams} from "react-router-dom";
+import {LinearProgress, Stack} from "@mui/material";
 
 import css from './Movies.module.css'
 import {useAppDispatch, useAppSelector} from "../../hooks";
@@ -13,6 +14,7 @@ import {DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} f
 const Movies = () => {
     const dispatch = useAppDispatch();
     const {Movies, answer} = useAppSelector(state => state.movies);
+    const {loading} = useAppSelector(state => state.loading);
     const [query, setQuery] = useSearchParams(
         {page: '1', idsWith: '', idsWithout: '', queryParam: '', sort_by: "popularity.desc"});
 
@@ -28,13 +30,17 @@ const Movies = () => {
         if (queryParam && queryParam.length > 0) {
             dispatch(MovieActions.movieSearch({page: pageURL, queryParam,}))
         } else {
-            dispatch(MovieActions.getAll({page: pageURL, with_genres, without_genres,sort_by}))
+            dispatch(MovieActions.getAll({page: pageURL, with_genres, without_genres, sort_by}))
         }
-    }, [pageURL, queryParam, with_genres, without_genres,sort_by]);
+    }, [pageURL, queryParam, with_genres, without_genres, sort_by]);
 
     return (
         <div className={css.bigCont}>
-            {Movies.length > 0 ? <div>
+            {loading ? <Stack sx={{width: '100%', color: 'grey.500'}} spacing={2} className={css.loading}>
+                <LinearProgress color="secondary"/>
+                <LinearProgress color="success"/>
+                <LinearProgress color="inherit"/>
+            </Stack> : <div>{Movies.length > 0 ? <div>
                     <div className={css.MovieHeader}>
                         <div className={css.genreDeliting}>
                             <GenreDeleting query={query} setQuery={setQuery}/>
@@ -55,6 +61,7 @@ const Movies = () => {
                 </div> :
                 <div className={css.Nothing}>Вибачте за вашим запитом нічого не знайдено</div>
             }
+            </div>}
         </div>
     );
 };
