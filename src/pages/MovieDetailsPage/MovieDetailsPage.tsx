@@ -14,11 +14,10 @@ const MovieDetailsPage = () => {
     const dispatch = useAppDispatch() ;
     useEffect(() => {
        dispatch(OneMovieActions.getMovie(+movieId))
-
         if (imdb_id.length > 0) {
             dispatch(OneMovieActions.getFromOMdb(imdb_id))
         }
-    }, [imdb_id, movieId]);
+    }, [dispatch, imdb_id, movieId]);
 
 
     return (

@@ -8,10 +8,10 @@ import {GenreActions} from "../store";
 
 
 const MainLayout = () => {
+
     const {darkTheme} = useAppSelector(state => state.theme);
     const {allGenres} = useAppSelector(state => state.genres);
     const dispatch = useAppDispatch();
-
     useEffect(() => {
         if (allGenres.length === 0) {
             dispatch(GenreActions.getAllGenres());
@@ -21,7 +21,9 @@ const MainLayout = () => {
     return (
         <div className={darkTheme?css.MainLayoutDark:css.MainLayout}>
             <Header/>
-             <Outlet/>
+
+            <Outlet/>
+
         </div>
     );
 };

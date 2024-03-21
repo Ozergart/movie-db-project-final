@@ -14,7 +14,7 @@ interface IProps extends PropsWithChildren {
     imdb: IMdbRes
 }
 
-const MovieDetails: FC<IProps> = ({movie, imdb}) => {
+const   MovieDetails: FC<IProps> = ({movie, imdb}) => {
     const {darkTheme} = useAppSelector(state => state.theme);
     const navigate = useNavigate();
     let ImdbTrigger = false

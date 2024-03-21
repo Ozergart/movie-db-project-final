@@ -1,10 +1,8 @@
-import React, {useEffect,} from 'react';
+import React from 'react';
 import {useSearchParams} from "react-router-dom";
-import {LinearProgress, Stack} from "@mui/material";
 
 import css from './Movies.module.css'
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {MovieActions} from "../../store";
+import {useAppSelector} from "../../hooks";
 import {Movie} from "../MovieCont";
 import {GenreDeleting} from "../Genres";
 import {Pagination} from "../Pagination";
@@ -12,37 +10,17 @@ import {DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} f
 
 
 const Movies = () => {
-    const dispatch = useAppDispatch();
+
     const {Movies, answer} = useAppSelector(state => state.movies);
-    const {loading} = useAppSelector(state => state.loading);
     const [query, setQuery] = useSearchParams(
         {page: '1', idsWith: '', idsWithout: '', queryParam: '', sort_by: "popularity.desc"});
 
-    const pageURL: number = +query.get('page')
-    const sort_by = query.get('sort_by')
     const queryParam: string = query.get('queryParam')
-
-    const with_genres: string = query.get('idsWith')
-    const without_genres: string = query.get('idsWithout')
-
-
-    useEffect(() => {
-        if (queryParam && queryParam.length > 0) {
-            dispatch(MovieActions.movieSearch({page: pageURL, queryParam,}))
-            console.log("2");
-        } else {
-            dispatch(MovieActions.getAll({page: pageURL, with_genres, without_genres, sort_by}))
-            console.log("1");
-        }
-    }, [pageURL, queryParam, with_genres, without_genres, sort_by, dispatch]);
+    const pageURL: number = +query.get('page')
 
     return (
         <div className={css.bigCont}>
-            {loading ? <Stack sx={{width: '100%', color: 'grey.500'}} spacing={2} className={css.loading}>
-                <LinearProgress color="secondary"/>
-                <LinearProgress color="success"/>
-                <LinearProgress color="inherit"/>
-            </Stack> : <div>{Movies.length > 0 ? <div>
+                <div>{Movies.length > 0 ? <div>
                     <div className={css.MovieHeader}>
                         <div className={css.genreDeliting}>
                             <GenreDeleting query={query} setQuery={setQuery}/>
@@ -62,8 +40,7 @@ const Movies = () => {
                     </div>
                 </div> :
                 <div className={css.Nothing}>Вибачте за вашим запитом нічого не знайдено</div>
-            }
-            </div>}
+                }</div>
         </div>
     );
 };
