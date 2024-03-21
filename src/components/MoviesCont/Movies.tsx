@@ -29,10 +29,12 @@ const Movies = () => {
     useEffect(() => {
         if (queryParam && queryParam.length > 0) {
             dispatch(MovieActions.movieSearch({page: pageURL, queryParam,}))
+            console.log("2");
         } else {
             dispatch(MovieActions.getAll({page: pageURL, with_genres, without_genres, sort_by}))
+            console.log("1");
         }
-    }, [pageURL, queryParam, with_genres, without_genres, sort_by]);
+    }, [pageURL, queryParam, with_genres, without_genres, sort_by, dispatch]);
 
     return (
         <div className={css.bigCont}>

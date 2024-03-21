@@ -16,14 +16,12 @@ const MainLayout = () => {
         if (allGenres.length === 0) {
             dispatch(GenreActions.getAllGenres());
         }
-    }, []);
+    }, [allGenres.length, dispatch]);
 
     return (
         <div className={darkTheme?css.MainLayoutDark:css.MainLayout}>
             <Header/>
-
              <Outlet/>
-
         </div>
     );
 };

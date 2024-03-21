@@ -1,11 +1,12 @@
-import {createSlice, isFulfilled, isPending, isRejected} from "@reduxjs/toolkit";
+import { createSlice, isFulfilled, isPending, isRejected} from "@reduxjs/toolkit";
+import {MovieActions} from "./movieSlice";
 
 interface IState {
     loading:boolean
 }
 
 const initialState: IState = {
-    loading:null
+    loading:false
 }
 const LoadingSlice = createSlice({
     name: "Loading",
@@ -14,23 +15,18 @@ const LoadingSlice = createSlice({
         
     },
     extraReducers: builder => builder
-        .addMatcher(isFulfilled(),(state, action) => {
-            console.log(action.payload);
+        .addMatcher(isFulfilled(),(state) => {
             state.loading = false
         })
         .addMatcher(isPending(), (state,action) => {
-            console.log(action.payload);
-            state.loading = true
+            state.loading = action.type !== MovieActions.moviesFastSearch.pending.type;
         })
-        .addMatcher(isRejected(),(state,action) => {
-            console.log(action.payload);
+        .addMatcher(isRejected(),(state) => {
             state.loading = false
         })
 })
 
-const { reducer: LoadingReducer, actions } = LoadingSlice
-const LoadingActions = { ...actions }
+const { reducer: LoadingReducer } = LoadingSlice
 export {
-    LoadingActions,
     LoadingReducer
 }
