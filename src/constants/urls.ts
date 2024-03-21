@@ -4,12 +4,14 @@ const discover = '/discover'
 const movie = '/movie'
 const genres = '/genre'
 const user = '/account'
+const videos = '/videos'
 
 const urls = {
     'movies': {
         'base': discover + movie,
-        'byId': (id: number) => `${movie}/${id}`,
-        'search': search + movie
+        'byId': (id: number):string => `${movie}/${id}`,
+        'search': search + movie,
+        'videoByIds':(id:number):string=>`${movie}/${id}${videos}`
     },
     'user': {
         'base': user

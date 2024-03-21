@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
 
-import {Movies} from "../../components";
+import {LoadingString, Movies} from "../../components";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {useSearchParams} from "react-router-dom";
 import {MovieActions} from "../../store";
-import css from "../../components/MoviesCont/Movies.module.css";
-import {LinearProgress, Stack} from "@mui/material";
+
 
 
 const MoviesPage = () => {
@@ -27,19 +26,13 @@ const MoviesPage = () => {
             dispatch(MovieActions.movieSearch({page: pageURL, queryParam,}))
         } else {
             dispatch(MovieActions.getAll({page: pageURL, with_genres, without_genres, sort_by}))
-            console.log(loading);
         }
-    }, [pageURL, queryParam, with_genres, without_genres, sort_by]);
+    }, [pageURL, queryParam, with_genres, without_genres, sort_by, dispatch]);
 
 
     return (
         <div>
-            {loading ? <Stack sx={{width: '100%', color: 'grey.500'}} spacing={2} className={css.loading}>
-                    <LinearProgress color="secondary"/>
-                    <LinearProgress color="success"/>
-                    <LinearProgress color="inherit"/>
-                </Stack> :
-                <Movies/>}
+            {loading ? <LoadingString/> : <Movies/>}
         </div>
     );
 };

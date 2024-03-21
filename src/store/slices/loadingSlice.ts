@@ -20,7 +20,6 @@ const LoadingSlice = createSlice({
         })
         .addMatcher(isPending(), (state,action) => {
             state.loading = action.type !== MovieActions.moviesFastSearch.pending.type;
-            console.log(action.meta);
         })
         .addMatcher(isRejected(),(state) => {
             state.loading = false

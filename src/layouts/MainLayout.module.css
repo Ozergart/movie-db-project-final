@@ -5,6 +5,9 @@
 }
 .MainLayoutDark{
     background: rgba(14, 16, 26 , 0.55);
+    /*background-color: black;*/
     min-height: 100vh;
     min-width: 100%;
+    position: relative;
+
 }

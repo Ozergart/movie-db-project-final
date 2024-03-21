@@ -1,5 +1,6 @@
 export * from './Genres'
 export * from './Header'
+export * from './LoadingString'
 export * from './MovieCont'
 export * from './MovieDetails'
 export * from './MovieMini'

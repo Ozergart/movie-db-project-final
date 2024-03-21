@@ -1,9 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {GenreReducer, MovieReducer} from "./slices";
-import {ThemeReducer} from "./slices/themeSlice";
-import {UserReducer} from "./slices/userSlice";
-import {LoadingReducer} from "./slices/loadingSlice";
-import {OneMovieReducer} from "./slices/oneMovieSlice";
+import {ThemeReducer} from "./slices";
+import {UserReducer} from "./slices";
+import {LoadingReducer} from "./slices";
+import {OneMovieReducer} from "./slices";
+import {TrailerReducer} from "./slices";
 
 const store = configureStore({
         reducer: {
@@ -12,7 +13,8 @@ const store = configureStore({
             theme:ThemeReducer,
             user:UserReducer,
             loading:LoadingReducer,
-            oneMovie:OneMovieReducer
+            oneMovie:OneMovieReducer,
+            trailer:TrailerReducer
         }
     }
 )

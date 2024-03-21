@@ -50,7 +50,6 @@ const OneMovieSlice = createSlice({
             state.imdb_id = null
             state.movie = action.payload
             state.imdb_id = action.payload.imdb_id
-            console.log(state.movie);
         })
         .addCase(getFromOMdb.fulfilled,(state, action) => {
             state.imdb_res = action.payload
