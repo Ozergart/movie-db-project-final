@@ -3,6 +3,7 @@ import React, {useEffect, } from 'react';
 import css from './User.module.css'
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {UserActions} from "../../store";
+import {LoadingCircle} from "../Loadings";
 
 
 const User = () => {
@@ -13,7 +14,7 @@ const User = () => {
         dispatch(UserActions.getUser())
     }, [dispatch]);
     if(!user){
-        return <p>Loading</p>
+        return <LoadingCircle/>
     }
     const {username,avatar:{gravatar:{hash}},id} = user
 

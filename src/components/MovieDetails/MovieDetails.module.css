@@ -55,6 +55,8 @@ display: flex;
 .play{
     position: absolute;
     transition: 0.5s;
+    height: 150px;
+    width: 150px;
 }
 .poster:hover +.play{
     width: 200px;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import css from "../MoviesCont/Movies.module.css";
+import css from "../../MoviesCont/Movies.module.css";
 import {LinearProgress, Stack} from "@mui/material";
 
 const LoadingString = () => {
