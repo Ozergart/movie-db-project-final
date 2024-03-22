@@ -22,6 +22,7 @@ const Movie: FC<IProps> = ({movie}) => {
         activeFillColor: '#ffb700',
         inactiveFillColor: '#fbf1a9'
     }
+
     const detailsNavigate = ()=>{
         dispatch(OneMovieActions.movieSetNull())
         navigate(`/movieDetails/${id}`)
