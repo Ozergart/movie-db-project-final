@@ -5,7 +5,7 @@ import { useNavigate} from "react-router-dom";
 import css from './MovieDetails.module.css';
 import { IMdbRes } from "../../interfaces";
 import { Genres } from "../Genres";
-import {genreService, userService} from "../../services";
+import {genreService, movieDBServices, userService} from "../../services";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { TrailerActions } from "../../store";
 import { Trailer } from "../TrailerCont";
@@ -28,13 +28,20 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
     const [similarTrigger, setSimilarTrigger] = useState<boolean>(false);
     const [favorite, setFavorite] = useState<boolean>(accState.favorite)
     const [watchList, setWatchList] = useState<boolean>(accState.watchlist)
+    const [movieRating, setMovieRating] = useState<{value:number}|false>(accState.rated)
 
     useEffect(() => {
         dispatch(TrailerActions.trailerSetNull());
         if (videosEn.length > 0 || videosUk.length > 0) {
             dispatch(TrailerActions.getTrailerFromVideos());
         }
-    }, [videosUk, videosEn, trailer, dispatch]);
+        if (similarTrigger) {
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    }, [videosUk, videosEn, trailer, dispatch, similarTrigger]);
 
     const handleTrailerClick = () => {
        if (trailer) {
@@ -62,6 +69,12 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
     const setWatchListClick = async ()=>{
         await userService.setWatchList(user.id,+movie.id,!watchList)
         setWatchList(prevState => !prevState)
+    }
+    const rateClick = async (rating:number)=>{
+        if(rating>0) {
+            await movieDBServices.setRating(movie.id, rating * 2)
+            setMovieRating({'value': rating * 2})
+        }
     }
 
     const renderRatings = () => {
@@ -97,7 +110,7 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
             </span>
         ));
     };
-    const similarActivation = () => {
+    const similarActivation = async () => {
         setSimilarTrigger(prev=>!prev)
     }
     const {
@@ -147,9 +160,9 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
                 </div>
                 <div className={darkTheme ? css.smallContDark : css.smallCont}>
                     <div className={css.starsCont}>
-                        <Rating className={css.stars} orientation={"horizontal"} value={vote_average / 2}
-                                radius={"small"} readOnly={true} halfFillMode={"svg"} itemStyles={starStyle}/>
+                        <Rating className={css.stars} value={+(vote_average / 2).toFixed(0)} itemStyles={starStyle} onChange={rateClick} />
                         <p>Всього оцінок {vote_count}, середня {(vote_average / 2).toFixed(2)}</p>
+                        <p>Ваша очінка: {movieRating?movieRating.value/2:'Відсутня'}</p>
                         {renderRatings()}
                     </div>
                     <div className={css.title}>

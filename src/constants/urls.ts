@@ -10,6 +10,7 @@ const similar = '/similar'
 const watchlist = '/watchlist'
 const favorite = '/favorite'
 const account_states = '/account_states'
+const rating = '/rating'
 
 const urls = {
     'movies': {
@@ -22,7 +23,8 @@ const urls = {
         'watchListGet':(userId:number):string=>`${user}/${userId}${watchlist}${movies}`,
         'favorite':(userId:number):string=>`${user}/${userId}${favorite}`,
         'favoriteGet':(userId:number):string=>`${user}/${userId}${favorite}${movies}`,
-        'accStateById':(movieId:number):string=>`${movie}/${movieId}${account_states}`
+        'accStateById':(movieId:number):string=>`${movie}/${movieId}${account_states}`,
+        'rating':(movieId:number):string=>`${movie}/${movieId}${rating}`,
     },
     'user': {
         'base': user

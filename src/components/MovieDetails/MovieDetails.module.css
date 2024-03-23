@@ -120,10 +120,12 @@ display: flex;
     align-items: flex-end;
     justify-content: flex-end;
 }
-
 .rate{
     font-size: 20px;
     color: gold;
+}
+.ratings p{
+    font-size: 15px;
 }
 .similarActivator{
      min-height: 10px;

@@ -31,7 +31,8 @@ const movieDBServices = {
             page,
             sort_by,
             language:'uk'
-        }})
+        }}),
+    setRating:(movieId:number,rating:number)=>apiService.post(urls.movies.rating(movieId), {"value":rating})
 }
 export  {
     movieDBServices
