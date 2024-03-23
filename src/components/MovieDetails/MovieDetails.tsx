@@ -120,6 +120,7 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
         activeFillColor: '#ffb700',
         inactiveFillColor: '#fbf1a9'
     };
+    console.log(movie);
     return (
         <div className={darkTheme ? css.MovieDetailsDark : css.MovieDetails}
              style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${backdrop})`}}>

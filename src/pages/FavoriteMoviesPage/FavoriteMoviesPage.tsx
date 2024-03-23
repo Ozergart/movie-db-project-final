@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
+import {useSearchParams} from "react-router-dom";
+
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {MovieActions} from "../../store";
 import {LoadingString, Movies} from "../../components";
-import {useSearchParams} from "react-router-dom";
 
 const FavoriteMoviesPage = () => {
     const {loading} = useAppSelector(state => state.loading);

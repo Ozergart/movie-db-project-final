@@ -41,7 +41,6 @@ const Movies = () => {
             );
         }
     };
-    console.log(answer);
 
     return (
         <div className={css.bigCont}>
