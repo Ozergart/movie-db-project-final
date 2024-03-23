@@ -9,7 +9,8 @@ interface IProps extends PropsWithChildren {
 }
 
 const DateSorting: FC<IProps> = ({setQuery, query}) => {
-    const [status, setStatus] = useState<string>("desc")
+    const urlStat = query.get('sort_by').slice(query.get("sort_by").indexOf('.')+1)
+    const [status, setStatus] = useState<string>(urlStat)
 
     useEffect(() => {
         if ((query.get("sort_by") !== "primary_release_date.desc") && (query.get("sort_by") !== "primary_release_date.asc")) {

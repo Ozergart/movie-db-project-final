@@ -10,13 +10,17 @@ import {OneMovieActions, TrailerActions} from "../../store";
 const MovieDetailsPage = () => {
     const {movieId} = useParams<string>();
 
-    const {movie, imdb_id, imdb_res} = useAppSelector(state => state.oneMovie);
+    const {movie, imdb_id, imdb_res,accState} = useAppSelector(state => state.oneMovie);
     const {loading} = useAppSelector(state => state.loading);
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(OneMovieActions.getMovie(+movieId))
         dispatch(TrailerActions.getVideosUk(+movieId))
         dispatch(TrailerActions.getVideosEn(+movieId))
+        dispatch(OneMovieActions.similarById(+movieId))
+
+        dispatch(OneMovieActions.accStateSetNull())
+        dispatch(OneMovieActions.getAccState(+movieId))
         if (imdb_id?.length > 0) {
             dispatch(OneMovieActions.getFromOMdb(imdb_id))
         }
@@ -25,7 +29,7 @@ const MovieDetailsPage = () => {
 
     return (
         <div>
-            {!movie||loading ? <LoadingString/> : <MovieDetails imdb={imdb_res}/>}
+            {!accState||!movie||loading ? <LoadingString/> : <MovieDetails imdb={imdb_res}/>}
         </div>
     );
 };

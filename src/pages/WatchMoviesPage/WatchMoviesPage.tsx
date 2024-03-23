@@ -1,0 +1,33 @@
+import React, {useEffect} from 'react';
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {MovieActions} from "../../store";
+import {LoadingString, Movies} from "../../components";
+import {useSearchParams} from "react-router-dom";
+
+const WatchMoviesPage = () => {
+    const {user} = useAppSelector(state => state.user);
+    const {loading} = useAppSelector(state => state.loading);
+    const {Movies:movies} = useAppSelector(state => state.movies);
+    const [query] = useSearchParams(
+        {page: '1',  sort_by: "created_at.asc"});
+
+    const pageURL: number = +query.get('page')
+    const sort_by = query.get('sort_by')
+
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        if(user) {
+            dispatch(MovieActions.getWatchList({
+                userId:user.id,
+                page:pageURL,
+                sort_by}))
+        }
+    }, [dispatch, pageURL, sort_by, user]);
+    return (
+        <div>
+            {!movies||loading?<LoadingString/>:<Movies/>}
+        </div>
+    );
+};
+
+export {WatchMoviesPage}

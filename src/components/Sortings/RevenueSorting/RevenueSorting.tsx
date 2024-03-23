@@ -9,7 +9,8 @@ interface IProps extends PropsWithChildren {
 }
 
 const RevenueSorting: FC<IProps> = ({setQuery, query}) => {
-    const [status, setStatus] = useState<string>('desc')
+    const urlStat = query.get('sort_by').slice(query.get("sort_by").indexOf('.')+1)
+    const [status, setStatus] = useState<string>(urlStat)
 
     useEffect(() => {
         if ((query.get("sort_by") !== "revenue.desc") && (query.get("sort_by") !== "revenue.asc")) {

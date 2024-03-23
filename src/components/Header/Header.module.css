@@ -15,8 +15,8 @@
 }
 .links{
     display: flex;
-    margin-left: 3%;
-    width: 400px
+    margin: 0 5%;
+    width: auto;
 }
 .links button{
     min-height: 10px;
@@ -34,8 +34,8 @@
 }
 .linksDark{
     display: flex;
-    margin-left: 3%;
-    width: 400px
+    margin: 0 5%;
+    width: auto;
 }
 .linksDark button{
     min-height: 10px;

@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, isRejected} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isRejected} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
 import {IMovie, IMovieRes} from "../../interfaces";
@@ -57,6 +57,30 @@ const movieSearch = createAsyncThunk<IMovie, { page:number, queryParam:string }>
         }
     }
 )
+const getFavorite = createAsyncThunk<IMovie,{ userId:number,page:number,sort_by:string }>(
+    'movieSlice/getFavorite',
+    async ({userId, page, sort_by},{rejectWithValue})=>{
+        try {
+            const {data} = await movieDBServices.getFavorite(userId,page,sort_by)
+            return data
+        }catch (e) {
+            const err = e as AxiosError
+            rejectWithValue(err.response.data)
+        }
+    }
+)
+const getWatchList = createAsyncThunk<IMovie, { userId:number,page:number,sort_by:string }>(
+    'movieSlice/getWatchList',
+    async ({userId, page, sort_by},{rejectWithValue})=>{
+        try {
+            const {data} = await movieDBServices.getWatchLIst(userId,page,sort_by)
+            return data
+        }catch (e) {
+            const err = e as AxiosError
+            rejectWithValue(err.response.data)
+        }
+    }
+)
 const movieSlice = createSlice({
     name:'movieSlice',
     initialState,
@@ -72,10 +96,6 @@ const movieSlice = createSlice({
         }
     },
     extraReducers:builder => builder
-        .addCase(getAll.fulfilled,(state, action) => {
-            state.answer = action.payload
-            state.Movies = action.payload.results
-        })
         .addCase(movieSearch.fulfilled,(state, action) => {
             state.answer = action.payload
             state.Movies = action.payload.results
@@ -83,12 +103,16 @@ const movieSlice = createSlice({
         .addCase(moviesFastSearch.fulfilled, (state, action) => {
             state.moviesSearch = action.payload.results
         })
+        .addMatcher(isFulfilled(getFavorite,getWatchList,getAll),(state, action) => {
+            state.answer = action.payload
+            state.Movies = action.payload.results
+        })
         .addMatcher(isRejected(getAll),(state) => {
             state.error = "Помишка у пошуку"
         })
 })
 const {reducer:MovieReducer,actions} = movieSlice
-const MovieActions = {...actions, getAll,moviesFastSearch,movieSearch}
+const MovieActions = {...actions, getAll,moviesFastSearch,movieSearch,getFavorite,getWatchList}
 export {
     MovieActions,
     MovieReducer

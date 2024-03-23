@@ -1,0 +1,15 @@
+
+.similar{
+    display: flex;
+    position: relative;
+    border-radius: 30px;
+    background: rgb(86,128,233);
+    background: radial-gradient(circle, rgba(86,128,233,0.85) 65%, rgba(125,157,238,0.6) 80%, rgba(164,186,243,0.3) 90%, rgba(255,255,255,0) 100%);
+}
+.similarDark{
+    display: flex;
+    position: relative;
+    border-radius: 30px;
+    background-color: #1a1919;
+
+}

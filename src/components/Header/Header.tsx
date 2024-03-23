@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import css from './Header.module.css'
 import {User} from "../User";
@@ -21,6 +21,7 @@ const Header = () => {
     const {darkTheme} = useAppSelector(state => state.theme)
     const {fastSearch,moviesSearch} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const input = document.getElementById('inputFast') as HTMLInputElement
     const search = () => {
@@ -28,6 +29,12 @@ const Header = () => {
     }
     const searchFilm = () => {
         setSearchTrigger(true)
+    }
+    const favorite = ()=>{
+        navigate('/favorite?page=1&sort_by=created_at.asc')
+    }
+    const watchList = ()=>{
+        navigate('/watchList?page=1&sort_by=created_at.asc')
     }
     const fastSearchValue = (e: IEvent): void => {
         dispatch(MovieActions.setFastSearch(e.target.value))
@@ -59,6 +66,8 @@ const Header = () => {
             </div>
             <div className={darkTheme ? css.linksDark : css.links}>
                 <button onClick={search}>Пошук по жанрам</button>
+                <button onClick={()=>watchList()}>Список переглянутого</button>
+                <button onClick={()=>favorite()}>Улюбленне</button>
                 <button onClick={searchFilm}>Розширений пошук</button>
             </div>
             <div className={darkTheme ? css.fastSearchDark : css.fastSearch}>

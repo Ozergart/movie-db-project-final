@@ -1,12 +1,12 @@
 import React from 'react';
-import {useSearchParams} from "react-router-dom";
+import {useLocation, useSearchParams} from "react-router-dom";
 
 import css from './Movies.module.css'
 import {useAppSelector} from "../../hooks";
 import {Movie} from "../MovieCont";
 import {GenreDeleting} from "../Genres";
 import {Pagination} from "../Pagination";
-import {DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} from "../Sortings";
+import {CreatedSorting, DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} from "../Sortings";
 
 
 const Movies = () => {
@@ -18,6 +18,31 @@ const Movies = () => {
     const queryParam: string = query.get('queryParam')
     const pageURL: number = +query.get('page')
 
+    const location = useLocation();
+
+    const renderFilters = () => {
+        if (location.pathname === '/favorite'||location.pathname === '/watchList') {
+            return (
+                <div className={css.sorting}>
+                    <p>Сортувати за:</p>
+                    <CreatedSorting setQuery={setQuery} query={query}/>
+                </div>
+            );
+        } else {
+            return (
+                <div className={css.sorting}>
+                    <p>Сортувати за:</p>
+                    <PopularitySorting setQuery={setQuery} query={query}/>
+                    <RevenueSorting setQuery={setQuery} query={query}/>
+                    <DateSorting setQuery={setQuery} query={query}/>
+                    {/* eslint-disable-next-line react/jsx-pascal-case */}
+                    <Original_titleSorting setQuery={setQuery} query={query}/>
+                </div>
+            );
+        }
+    };
+    console.log(answer);
+
     return (
         <div className={css.bigCont}>
                 <div>{Movies.length > 0 ? <div>
@@ -26,14 +51,7 @@ const Movies = () => {
                             <GenreDeleting query={query} setQuery={setQuery}/>
                         </div>
                         <Pagination pageURL={pageURL} setQuery={setQuery} result={answer}/>
-                        <div className={css.sortingCont}>{!queryParam ? <div className={css.sorting}>
-                            <p>Сортувати за:</p>
-                            <PopularitySorting setQuery={setQuery} query={query}/>
-                            <RevenueSorting setQuery={setQuery} query={query}/>
-                            <DateSorting setQuery={setQuery} query={query}/>
-                            {/* eslint-disable-next-line react/jsx-pascal-case */}
-                            <Original_titleSorting setQuery={setQuery} query={query}/>
-                        </div> : null}</div>
+                        <div className={css.sortingCont}>{!queryParam ? renderFilters(): null}</div>
                     </div>
                     <div className={css.Movies}>{Movies.map(movie => <Movie key={movie.id} movie={movie}/>)}</div>
                     <div className={css.bottomPages}><Pagination pageURL={pageURL} setQuery={setQuery} result={answer}/>

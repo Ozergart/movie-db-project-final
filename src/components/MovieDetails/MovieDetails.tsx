@@ -1,14 +1,15 @@
 import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { Rating, RoundedStar } from "@smastrom/react-rating";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 import css from './MovieDetails.module.css';
 import { IMdbRes } from "../../interfaces";
 import { Genres } from "../Genres";
-import { genreService } from "../../services";
+import {genreService, userService} from "../../services";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { TrailerActions } from "../../store";
 import { Trailer } from "../TrailerCont";
+import {SimilarMovies} from "../SimilarMovies";
 
 interface IProps extends PropsWithChildren {
     imdb: IMdbRes
@@ -17,10 +18,16 @@ interface IProps extends PropsWithChildren {
 const MovieDetails: FC<IProps> = ({ imdb }) => {
     const {darkTheme} = useAppSelector(state => state.theme);
     const {trailer, videosUk, videosEn} = useAppSelector(state => state.trailer);
-    const {movie} = useAppSelector(state => state.oneMovie);
+    const {user} = useAppSelector(state => state.user);
+    const {movie,accState} = useAppSelector(state => state.oneMovie);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
+
     const [trailerTrigger, setTrailerTrigger] = useState<boolean>(false);
+    const [similarTrigger, setSimilarTrigger] = useState<boolean>(false);
+    const [favorite, setFavorite] = useState<boolean>(accState.favorite)
+    const [watchList, setWatchList] = useState<boolean>(accState.watchlist)
 
     useEffect(() => {
         dispatch(TrailerActions.trailerSetNull());
@@ -47,6 +54,15 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
         }
         return null;
     };
+
+    const setFavoriteClick = async ()=>{
+        await userService.setFavorite(user.id,+movie.id,!favorite)
+        setFavorite(prevState => !prevState)
+    }
+    const setWatchListClick = async ()=>{
+        await userService.setWatchList(user.id,+movie.id,!watchList)
+        setWatchList(prevState => !prevState)
+    }
 
     const renderRatings = () => {
         if (imdb && imdb.Ratings) {
@@ -81,7 +97,9 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
             </span>
         ));
     };
-
+    const similarActivation = () => {
+        setSimilarTrigger(prev=>!prev)
+    }
     const {
         production_companies,
         production_countries,
@@ -107,13 +125,24 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
              style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${backdrop})`}}>
             <div className={css.bigCont}>
                 <div className={css.posterBlock}>
-                    <div className={trailer ? css.posterBlockWithTrailer : undefined} onClick={handleTrailerClick}>
+                    <div className={trailer ? css.posterBlockWithTrailer : null} onClick={handleTrailerClick}>
                         <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`постер фільму ${title}`}
                              className={css.poster}/>
                         {renderTrailerIcon()}
                     </div>
+                    <div className={css.listBlock}>
+                        <div className={css.favoriteList} onClick={() => setFavoriteClick()}
+                             style={{backgroundColor: favorite ? 'green' : 'red'}}><img width="40" height="40"
+                                                                                        src="https://img.icons8.com/ios-filled/40/star--v1.png"
+                                                                                        alt="star--v1"/></div>
+                        <div className={css.watchList} onClick={() => setWatchListClick()}
+                             style={{backgroundColor: watchList ? 'green' : 'red'}}><img width="40" height="40"
+                                                                                         src="https://img.icons8.com/dotty/80/visible.png"
+                                                                                         alt="visible"/></div>
+                    </div>
                     <div className={css.genres}><Genres genre_ids={genreService.objectToIds(genres)}
-                                                        horisontal={false}/></div>
+                                                        horisontal={false}/>
+                    </div>
                 </div>
                 <div className={darkTheme ? css.smallContDark : css.smallCont}>
                     <div className={css.starsCont}>
@@ -136,9 +165,15 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
                         Компанія виробник: {renderProductionCompanies()}
                     </div>
                     <p>{overview}</p>
+                    <button className={darkTheme?css.similarActivatorDark:css.similarActivator}
+                          onClick={()=>similarActivation()}>
+                        {similarTrigger?"Приховати":"Показати схожі"}
+                    </button>
+
                 </div>
             </div>
             {trailerTrigger && <Trailer settrailerTrigger={setTrailerTrigger}/>}
+            {similarTrigger&&<SimilarMovies/>}
         </div>
     );
 };
