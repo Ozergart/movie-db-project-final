@@ -107,7 +107,7 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
                     </button>
                 </div>
             </div>
-            {trailerTrigger && <Trailer settrailerTrigger={setTrailerTrigger}/>}
+            {trailerTrigger && <Trailer setTrailerTrigger={setTrailerTrigger}/>}
             {similarTrigger&&<SimilarMovies/>}
         </div>
     );

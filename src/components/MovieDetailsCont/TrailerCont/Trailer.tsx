@@ -8,10 +8,10 @@ import {setStateType} from "../../../types";
 
 
 interface IProps extends PropsWithChildren {
-    settrailerTrigger: setStateType<boolean>
+    setTrailerTrigger: setStateType<boolean>
 }
 
-const Trailer: FC<IProps> = ({settrailerTrigger}) => {
+const Trailer: FC<IProps> = ({setTrailerTrigger}) => {
 
 
     const {darkTheme} = useAppSelector(state => state.theme);
@@ -22,7 +22,7 @@ const Trailer: FC<IProps> = ({settrailerTrigger}) => {
 
 
     const close = () => {
-        settrailerTrigger(false);
+        setTrailerTrigger(false);
     }
     return (
         <div className={darkTheme ? css.bigContDark : css.bigCont}>
