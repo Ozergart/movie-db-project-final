@@ -2,8 +2,9 @@ import React, {FC, PropsWithChildren} from 'react';
 
 
 import css from "./Trailer.module.css"
-import {setStateType} from "../../types";
-import {useAppSelector} from "../../hooks";
+import {useAppSelector} from "../../../hooks";
+import {setStateType} from "../../../types";
+
 
 
 interface IProps extends PropsWithChildren {

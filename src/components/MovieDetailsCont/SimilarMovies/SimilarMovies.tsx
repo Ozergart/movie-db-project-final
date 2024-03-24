@@ -1,9 +1,10 @@
 import {FC, PropsWithChildren} from 'react';
-import {useAppSelector} from "../../hooks";
 
+import {useAppSelector} from "../../../hooks";
 import css from './SimilarMovies.module.css'
-import {Movie} from "../MovieCont";
-import {LoadingString} from "../Loadings";
+import {LoadingString} from "../../Loadings";
+import {Movie} from "../../MovieCont";
+
 
 interface IProps extends PropsWithChildren {
 

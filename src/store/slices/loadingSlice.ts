@@ -1,4 +1,5 @@
 import { createSlice, isFulfilled, isPending, isRejected} from "@reduxjs/toolkit";
+
 import {MovieActions} from "./movieSlice";
 
 interface IState {
@@ -21,8 +22,10 @@ const LoadingSlice = createSlice({
         .addMatcher(isPending(), (state,action) => {
             state.loading = action.type !== MovieActions.moviesFastSearch.pending.type;
         })
-        .addMatcher(isRejected(),(state) => {
+        .addMatcher(isRejected(),(state,action) => {
             state.loading = false
+            console.log('error')
+            console.log(action.payload)
         })
 })
 

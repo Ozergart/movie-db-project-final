@@ -1,0 +1,30 @@
+.switch{
+    width: 60px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    margin-left:  2%;
+}
+.switchDark{
+    background: rgb(25,21,81);
+    width: 60px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-left:  2%;
+}
+.switch2{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #8860D0;
+}
+.switch2Dark{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: white;
+}

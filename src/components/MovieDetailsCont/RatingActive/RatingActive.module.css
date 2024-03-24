@@ -1,0 +1,25 @@
+.stars{
+    width: 200px;
+}
+
+.starsCont{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+.starsCont p{
+    font-size: 13px;
+}
+.ratings{
+    display: flex;
+    margin: 10px 0;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.rate{
+    font-size: 20px;
+    color: gold;
+}
+.ratings p{
+    font-size: 16px;
+}

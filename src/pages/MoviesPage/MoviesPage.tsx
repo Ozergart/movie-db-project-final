@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
+import {useSearchParams} from "react-router-dom";
 
 import {LoadingString, Movies} from "../../components";
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {useSearchParams} from "react-router-dom";
 import {MovieActions} from "../../store";
 
 

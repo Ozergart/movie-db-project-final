@@ -7,6 +7,7 @@ import {OneMovieActions, TrailerActions} from "../../store";
 
 
 
+
 const MovieDetailsPage = () => {
     const {movieId} = useParams<string>();
 

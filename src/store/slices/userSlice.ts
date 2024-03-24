@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {IUser} from "../../interfaces";
 import {AxiosError} from "axios";
+
+import {IUser} from "../../interfaces";
 import {userService} from "../../services";
 
 

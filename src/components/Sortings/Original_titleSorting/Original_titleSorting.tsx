@@ -41,17 +41,17 @@ const Original_titleSorting: FC<IProps> = ({setQuery, query}) => {
     }
     return (
         <div className={css.cont}>
-            {status === "neutral" ?
-                <div onClick={neutralClick} className={css.filter}><p>назвою оригіналу</p></div> : null}
-            {status === "desc" ? <div onClick={descClick} className={css.filter}>назвою оригіналу
+            {status === "neutral" &&
+                <div onClick={neutralClick} className={css.filter}><p>назвою оригіналу</p></div>}
+            {status === "desc" && <div onClick={descClick} className={css.filter}>назвою оригіналу
                 <img width="15" height="15"
                      src="https://img.icons8.com/ios-filled/50/expand-arrow--v1.png"
-                     alt="expand-arrow--v1"/></div> : null}
-            {status === "asc" ? <div onClick={ascClick} className={css.filter}>назвою оригіналу
+                     alt="expand-arrow--v1"/></div>}
+            {status === "asc" && <div onClick={ascClick} className={css.filter}>назвою оригіналу
                 <img
                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAXElEQVR4nN2RMQqAMAwAb1Lwf4UoVX/lR13sJimZBGnSSbwlS+4IBH7J2CuuwAVsPWIBDpvugJigASXZBXtUxBuQF7EZEBNz47L0DEzACSz4mG1fvUr0n0Nw/0vc38UVHyc2bOMAAAAASUVORK5CYII="
                     alt={'down'}/>
-            </div> : null}
+            </div>}
         </div>
     );
 };

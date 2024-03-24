@@ -1,9 +1,9 @@
 import React, {useEffect, } from 'react';
 
 import css from './User.module.css'
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {UserActions} from "../../store";
-import {LoadingCircle} from "../Loadings";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
+import {UserActions} from "../../../store";
+import {LoadingCircle} from "../../Loadings";
 
 
 const User = () => {

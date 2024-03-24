@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {IMdbRes, IMovieBig, IMovieRes} from "../../interfaces";
 import {AxiosError} from "axios";
+
+import {IMdbRes, IMovieBig, IMovieRes} from "../../interfaces";
 import {movieDBServices, omDbService} from "../../services";
 import {IAccState} from "../../interfaces/IAccState";
 
@@ -82,6 +83,7 @@ const OneMovieSlice = createSlice({
     extraReducers: builder => builder
         .addCase(getMovie.fulfilled, (state, action) => {
             state.imdb_id = null
+            state.movie = null
             state.movie = action.payload
             state.imdb_id = action.payload.imdb_id
         })

@@ -44,13 +44,14 @@ const Movies = () => {
 
     return (
         <div className={css.bigCont}>
-                <div>{Movies.length > 0 ? <div>
+                <div>{Movies.length > 0 ?
+                    <div>
                     <div className={css.MovieHeader}>
                         <div className={css.genreDeliting}>
                             <GenreDeleting query={query} setQuery={setQuery}/>
                         </div>
                         <Pagination pageURL={pageURL} setQuery={setQuery} result={answer}/>
-                        <div className={css.sortingCont}>{!queryParam ? renderFilters(): null}</div>
+                        <div className={css.sortingCont}>{!queryParam && renderFilters()}</div>
                     </div>
                     <div className={css.Movies}>{Movies.map(movie => <Movie key={movie.id} movie={movie}/>)}</div>
                     <div className={css.bottomPages}><Pagination pageURL={pageURL} setQuery={setQuery} result={answer}/>

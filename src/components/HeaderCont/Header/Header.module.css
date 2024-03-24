@@ -1,0 +1,76 @@
+
+.Header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    background-color: #84CEEB;
+}
+.HeaderDark{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    background-color: #000000;
+}
+.links{
+    display: flex;
+    margin: 0 5%;
+    width: auto;
+}
+.links button{
+    min-height: 10px;
+    width: auto;
+    font-size: 18px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: #8860D0;
+    margin: 0 3%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.linksDark{
+    display: flex;
+    margin: 0 5%;
+    width: auto;
+}
+.linksDark button{
+    min-height: 10px;
+    width: auto;
+    font-size: 18px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: #2a1a46;
+    margin: 0 3%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.links button:hover{
+    color: red;
+    transition: 1s;
+    border: 1px solid black;
+}
+.linksDark button:hover{
+    color: red;
+    transition: 1s;
+    border: 1px solid black;
+}
+.Header>a{
+    text-decoration: none;
+    font-size: 35px;
+    color: white;
+    margin-left: 50px;
+}
+.HeaderDark>a{
+    text-decoration: none;
+    font-size: 35px;
+    color: rgb(255, 195, 103);
+    margin-left: 50px;
+}
+

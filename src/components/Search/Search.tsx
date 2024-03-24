@@ -33,17 +33,19 @@ const Search: FC<IProps> = ({setSearchTrigger}) => {
         <div className={darkTheme ? css.ContDark : css.Cont}>
             <div className={darkTheme ? css.SearchDark : css.Search}>
                 <form onSubmit={search}>
-                    <input type="text" onChange={saveInput}
+                    <input type="text"
+                           onChange={saveInput}
                            className={darkTheme ? css.inputDark : css.input}
                            placeholder={"Введіть текст"}
                            id={'input'}/>
-                    <button onClick={search} disabled={inputValue.length === 0}
+                    <button onClick={search}
+                            disabled={inputValue.length === 0}
                             className={darkTheme ? css.startDark : css.start}>
                         <img width="50" height="50" src="https://img.icons8.com/stickers/100/search.png" alt="search"/>
                     </button>
                 </form>
-                <div className={css.close} onClick={close}><img src="https://img.icons8.com/papercut/60/delete-sign.png"
-                                                                alt="close"/></div>
+                <div className={css.close} onClick={close}>
+                    <img src="https://img.icons8.com/papercut/60/delete-sign.png" alt="close"/></div>
             </div>
 
         </div>

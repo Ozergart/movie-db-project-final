@@ -1,4 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
+
 import {GenreReducer, MovieReducer} from "./slices";
 import {ThemeReducer} from "./slices";
 import {UserReducer} from "./slices";
