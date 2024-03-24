@@ -36,7 +36,7 @@ const GenreSearch: FC<IProps> = ({genre, reset, setReset}) => {
             dispatch(GenreActions.genresWithoutNull())
             setReset(false);
         }
-    }, [reset]);
+    }, [dispatch, reset, setReset]);
     return (
         <div>
             {(status === 'neutral') ? (
