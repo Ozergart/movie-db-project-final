@@ -2,11 +2,11 @@ import React from 'react';
 import {useLocation, useSearchParams} from "react-router-dom";
 
 import css from './Movies.module.css'
-import {useAppSelector} from "../../hooks";
-import {Movie} from "../MovieCont";
-import {GenreDeleting} from "../Genres";
+import {useAppSelector} from "../../../hooks";
+import {Movie} from "../Movie";
+import {GenreDeleting} from "../../Genres";
 import {Pagination} from "../Pagination";
-import {CreatedSorting, DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} from "../Sortings";
+import {CreatedSorting, DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} from "../../Sortings";
 
 
 const Movies = () => {

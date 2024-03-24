@@ -2,8 +2,8 @@ import React, {FC, PropsWithChildren} from 'react';
 import {SetURLSearchParams} from "react-router-dom";
 
 import css from './Pagination.module.css'
-import {usePages} from "../../hooks";
-import {IMovie} from "../../interfaces";
+import {usePages} from "../../../hooks";
+import {IMovie} from "../../../interfaces";
 
 interface IProps extends PropsWithChildren {
     pageURL: number

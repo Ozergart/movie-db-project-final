@@ -3,8 +3,7 @@ import {FC, PropsWithChildren, useEffect, useState} from 'react';
 import {genreService} from "../../../../services";
 import css from './Genres.module.css'
 import {Genre} from "../GenreCont/Genre";
-import {useAppDispatch, useAppSelector} from "../../../../hooks";
-import {GenreActions} from "../../../../store";
+import { useAppSelector} from "../../../../hooks";
 
 interface IProps extends PropsWithChildren {
     genre_ids: number[]
@@ -13,7 +12,6 @@ interface IProps extends PropsWithChildren {
 
 const Genres: FC<IProps> = ({genre_ids, horisontal = true}) => {
     const {allGenres} = useAppSelector(state => state.genres)
-    const dispatch = useAppDispatch();
     const [GenresNames, setGenresNames] = useState<string[]>([])
 
 

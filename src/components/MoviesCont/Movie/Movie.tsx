@@ -2,11 +2,11 @@ import {FC, PropsWithChildren} from 'react';
 import {useNavigate} from "react-router-dom";
 import {Rating, RoundedStar} from "@smastrom/react-rating";
 
-import {IMovieRes} from "../../interfaces";
+import {IMovieRes} from "../../../interfaces";
 import css from './Movie.module.css'
-import {Genres} from "../Genres";
-import {useAppDispatch} from "../../hooks";
-import {OneMovieActions} from "../../store";
+import {Genres} from "../../Genres";
+import {useAppDispatch} from "../../../hooks";
+import {OneMovieActions} from "../../../store";
 
 interface IProps extends PropsWithChildren {
 movie:IMovieRes

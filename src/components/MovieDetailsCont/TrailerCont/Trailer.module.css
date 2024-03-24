@@ -54,10 +54,6 @@
     z-index: 100;
     opacity: 1;
 }
-.smallCont{
-    display: flex;
-    flex-wrap: wrap;
-}
 iframe{
     position: relative;
     z-index: 100;

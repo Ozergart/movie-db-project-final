@@ -22,9 +22,6 @@ const genreService = {
         const genre = allGenres.find((genre) => genre.name === name);
         return genre.id
     },
-    stringToMassive:(str:string):string[]=>{
-        return str.split(',')
-    },
     IdsToString: (ids: string[]): string => {
         return ids.join(',')
     },
