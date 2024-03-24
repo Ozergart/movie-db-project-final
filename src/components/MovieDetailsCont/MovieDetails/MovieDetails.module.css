@@ -5,6 +5,9 @@
     display: flex;
     max-width: 70%;
 }
+.title>img:hover{
+cursor: pointer;
+}
 .MovieDetails{
     width: 100%;
     min-height: 85vh;

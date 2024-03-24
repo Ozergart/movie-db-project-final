@@ -10,14 +10,13 @@ import {store} from "./store";
 
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
+document.title = 'MovieDBProject';
 root.render(
-<Provider store={store}>
-<RouterProvider router={router}/>
-
-</Provider>
-
+    <Provider store={store}>
+        <RouterProvider router={router}/>
+    </Provider>
 );
 
 
