@@ -6,9 +6,9 @@ import { Trailer } from "../TrailerCont";
 import {SimilarMovies} from "../SimilarMovies";
 import {Poster} from "../PosterCont";
 import {RatingActive} from "../RatingActive";
-import {useAppDispatch, useAppSelector} from "../../../hooks";
+import { useAppSelector} from "../../../hooks";
 import {IMdbRes} from "../../../interfaces";
-import {TrailerActions} from "../../../store";
+
 
 interface IProps extends PropsWithChildren {
     imdb: IMdbRes
@@ -16,28 +16,22 @@ interface IProps extends PropsWithChildren {
 
 const MovieDetails: FC<IProps> = ({ imdb }) => {
     const {darkTheme} = useAppSelector(state => state.theme);
-    const {trailer, videosUk, videosEn} = useAppSelector(state => state.trailer);
     const {movie} = useAppSelector(state => state.oneMovie);
-    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const [similarTrigger, setSimilarTrigger] = useState<boolean>(false);
     const [trailerTrigger, setTrailerTrigger] = useState<boolean>(false);
 
 
+
     useEffect(() => {
-        dispatch(TrailerActions.trailerSetNull());
-        if (videosEn.length > 0 || videosUk.length > 0) {
-            dispatch(TrailerActions.getTrailerFromVideos());
-        }
         if (similarTrigger) {
             window.scrollTo({
                 top: document.documentElement.scrollHeight,
                 behavior: 'smooth'
             });
         }
-    }, [videosUk, videosEn, trailer, dispatch, similarTrigger]);
-
+    }, [similarTrigger]);
 
 
 

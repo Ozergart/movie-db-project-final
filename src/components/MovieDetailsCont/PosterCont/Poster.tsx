@@ -1,10 +1,11 @@
-import React, {FC, PropsWithChildren, useState} from 'react';
+import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
 
 import css from './Poster.module.css'
 import {setStateType} from "../../../types";
-import {useAppSelector} from "../../../hooks";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {genreService, userService} from "../../../services";
 import {Genres} from "../../Genres";
+import {TrailerActions} from "../../../store";
 
 
 interface IProps extends PropsWithChildren {
@@ -12,7 +13,9 @@ interface IProps extends PropsWithChildren {
 }
 
 const Poster: FC<IProps> = ({setTrailerTrigger}) => {
-    const {trailer} = useAppSelector(state => state.trailer);
+    const dispatch = useAppDispatch();
+
+    const {trailer,videosUk,videosEn} = useAppSelector(state => state.trailer);
     const {accState,movie} = useAppSelector(state => state.oneMovie);
     const {user} = useAppSelector(state => state.user);
 
@@ -22,6 +25,13 @@ const Poster: FC<IProps> = ({setTrailerTrigger}) => {
 
     const {poster_path,title,genres} = movie
 
+
+    useEffect(() => {
+        dispatch(TrailerActions.trailerSetNull());
+        if (videosEn.length > 0 || videosUk.length > 0) {
+            dispatch(TrailerActions.getTrailerFromVideos());
+        }
+    }, [videosUk, videosEn, trailer, dispatch]);
     const setFavoriteClick = async ()=>{
         await userService.setFavorite(user.id,+movie.id,!favorite)
         setFavorite(prevState => !prevState)

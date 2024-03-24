@@ -13,6 +13,7 @@ interface IProps extends PropsWithChildren {
 
 const Trailer: FC<IProps> = ({settrailerTrigger}) => {
 
+
     const {darkTheme} = useAppSelector(state => state.theme);
     const {trailer} = useAppSelector(state => state.trailer);
     const {key} = trailer
