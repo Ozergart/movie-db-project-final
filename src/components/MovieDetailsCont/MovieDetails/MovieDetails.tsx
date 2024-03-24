@@ -1,4 +1,4 @@
-import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
+import React, {FC, PropsWithChildren, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 
 import css from './MovieDetails.module.css';
@@ -22,14 +22,7 @@ const MovieDetails: FC<IProps> = ({imdb}) => {
     const [similarTrigger, setSimilarTrigger] = useState<boolean>(false);
     const [trailerTrigger, setTrailerTrigger] = useState<boolean>(false);
 
-    useEffect(() => {
-        if (similarTrigger) {
-            window.scrollTo({
-                top: document.documentElement.scrollHeight,
-                behavior: 'smooth'
-            });
-        }
-    }, [similarTrigger]);
+
 
     const similarActivation = async () => {
         setSimilarTrigger(prev => !prev)

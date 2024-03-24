@@ -1,4 +1,4 @@
-import {FC, PropsWithChildren} from 'react';
+import {FC, PropsWithChildren, useEffect} from 'react';
 
 import {useAppSelector} from "../../../hooks";
 import css from './SimilarMovies.module.css'
@@ -14,7 +14,12 @@ const SimilarMovies: FC<IProps> = () => {
     const {similar} = useAppSelector(state => state.oneMovie);
     const {darkTheme} = useAppSelector(state => state.theme);
 
-
+    useEffect(() => {
+        const similarMoviesElement = document.getElementById('similar');
+        if (similarMoviesElement) {
+            similarMoviesElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, []);
     if (similar.length === 0) {
         return <LoadingString/>
     }
@@ -28,7 +33,7 @@ const SimilarMovies: FC<IProps> = () => {
 
 
     return (
-        <div className={darkTheme ? css.similarDark : css.similar} id={'similar'}>
+        <div className={darkTheme ? css.similarDark : css.similar} id={'similar'} >
             {renderSimilar()}
         </div>
     );

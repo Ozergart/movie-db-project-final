@@ -1,6 +1,7 @@
 .Movies{
     display: flex;
     flex-wrap: wrap;
+    min-width: 99vw;
 }
 .Nothing{
     font-size: 50px;
