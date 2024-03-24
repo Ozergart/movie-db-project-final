@@ -32,14 +32,20 @@ const Poster: FC<IProps> = ({setTrailerTrigger}) => {
             dispatch(TrailerActions.getTrailerFromVideos());
         }
     }, [videosUk, videosEn, trailer, dispatch]);
-    const setFavoriteClick = async ()=>{
-        await userService.setFavorite(user.id,+movie.id,!favorite)
-        setFavorite(prevState => !prevState)
-    }
+    const setFavoriteClick = async () => {
+        try {
+            await userService.setFavorite(user.id, +movie.id, !favorite);
+            setFavorite(prevState => !prevState);
+        } catch (error) {
+            console.error('Помилка:', error);
+        }};
     const setWatchListClick = async ()=>{
-        await userService.setWatchList(user.id,+movie.id,!watchList)
-        setWatchList(prevState => !prevState)
-    }
+       try{
+            await userService.setWatchList(user.id, +movie.id, !watchList)
+            setWatchList(prevState => !prevState)
+        } catch (error) {
+        console.error('Помилка:', error);
+    }};
 
     const handleTrailerClick = () => {
         if (trailer) {

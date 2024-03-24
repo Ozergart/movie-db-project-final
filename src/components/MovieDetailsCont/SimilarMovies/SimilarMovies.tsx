@@ -13,7 +13,9 @@ interface IProps extends PropsWithChildren {
 const SimilarMovies: FC<IProps> = () => {
     const {similar} = useAppSelector(state => state.oneMovie);
     const {darkTheme} = useAppSelector(state => state.theme);
-    if (similar.length === 0){
+
+
+    if (similar.length === 0) {
         return <LoadingString/>
     }
     const renderSimilar = () => {
@@ -23,8 +25,10 @@ const SimilarMovies: FC<IProps> = () => {
         }
         return similarMovies;
     }
+
+
     return (
-        <div className={darkTheme?css.similarDark:css.similar}>
+        <div className={darkTheme ? css.similarDark : css.similar} id={'similar'}>
             {renderSimilar()}
         </div>
     );

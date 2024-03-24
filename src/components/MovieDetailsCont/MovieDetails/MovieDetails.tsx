@@ -1,12 +1,12 @@
-import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
-import { useNavigate} from "react-router-dom";
+import React, {FC, PropsWithChildren, useEffect, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 
 import css from './MovieDetails.module.css';
-import { Trailer } from "../TrailerCont";
+import {Trailer} from "../TrailerCont";
 import {SimilarMovies} from "../SimilarMovies";
 import {Poster} from "../PosterCont";
 import {RatingActive} from "../RatingActive";
-import { useAppSelector} from "../../../hooks";
+import {useAppSelector} from "../../../hooks";
 import {IMdbRes} from "../../../interfaces";
 
 
@@ -14,15 +14,13 @@ interface IProps extends PropsWithChildren {
     imdb: IMdbRes
 }
 
-const MovieDetails: FC<IProps> = ({ imdb }) => {
+const MovieDetails: FC<IProps> = ({imdb}) => {
     const {darkTheme} = useAppSelector(state => state.theme);
     const {movie} = useAppSelector(state => state.oneMovie);
     const navigate = useNavigate();
 
     const [similarTrigger, setSimilarTrigger] = useState<boolean>(false);
     const [trailerTrigger, setTrailerTrigger] = useState<boolean>(false);
-
-
 
     useEffect(() => {
         if (similarTrigger) {
@@ -33,10 +31,8 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
         }
     }, [similarTrigger]);
 
-
-
     const similarActivation = async () => {
-        setSimilarTrigger(prev=>!prev)
+        setSimilarTrigger(prev => !prev)
     }
     const renderOriginalTitle = () => {
         return original_title !== title ? <p>Назва оригіналу: {original_title}</p> : null;
@@ -59,7 +55,7 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
             </span>
         ));
     };
-    const renderAdditionalInfo = ()=>{
+    const renderAdditionalInfo = () => {
         return <div className={css.additional}>
             {imdb && imdb.Actors ? <p>Актори: {imdb.Actors}</p> : null}
             {imdb && imdb.Writer ? <p>Сценаристи: {imdb.Writer}</p> : null}
@@ -101,14 +97,14 @@ const MovieDetails: FC<IProps> = ({ imdb }) => {
                     {renderAdditionalInfo()}
                     <p>{overview}</p>
                     <RatingActive imdb={imdb}/>
-                    <button className={darkTheme?css.similarActivatorDark:css.similarActivator}
-                          onClick={()=>similarActivation()}>
-                        {similarTrigger?"Приховати":"Показати схожі"}
+                    <button className={darkTheme ? css.similarActivatorDark : css.similarActivator}
+                            onClick={() => similarActivation()}>
+                        {similarTrigger ? "Приховати" : "Показати схожі"}
                     </button>
                 </div>
             </div>
             {trailerTrigger && <Trailer setTrailerTrigger={setTrailerTrigger}/>}
-            {similarTrigger&&<SimilarMovies/>}
+            {similarTrigger && <SimilarMovies/>}
         </div>
     );
 };
