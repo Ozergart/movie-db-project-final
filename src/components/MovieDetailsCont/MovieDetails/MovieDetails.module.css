@@ -1,95 +1,104 @@
-.title h2{
+.title h2 {
     margin: 0 20px;
 }
-.title{
+
+.title {
     display: flex;
     max-width: 70%;
 }
-.title>img:hover{
-cursor: pointer;
+
+.title > img:hover {
+    cursor: pointer;
 }
-.MovieDetails{
-    width: 100%;
-    min-height: 85vh;
-    background-size: cover;
-    overflow: hidden;
-}
-.MovieDetailsDark{
+
+.MovieDetails {
     width: 100%;
     min-height: 85vh;
     background-size: cover;
     overflow: hidden;
 }
 
-.bigCont{
+.MovieDetailsDark {
+    width: 100%;
+    min-height: 85vh;
+    background-size: cover;
+    overflow: hidden;
+}
+.bigCont {
     display: flex;
     max-height: 85vh;
     height: 85vh;
     align-items: center;
 }
-.smallCont>p{
-    margin-bottom: 30px;
-    color: snow;
-    font-size: 20px;
-}
-.smallCont>div{
+
+.smallCont > p {
     margin-bottom: 30px;
     color: snow;
     font-size: 20px;
 }
 
-.smallCont{
+.smallCont > div {
+    margin-bottom: 30px;
+    color: snow;
+    font-size: 20px;
+}
+
+.smallCont {
     position: relative;
     box-sizing: border-box;
     padding: 30px;
     max-height: 85vh;
     min-height: 80vh;
-    margin:40px 4vw;
+    margin: 40px 4vw;
     width: 40vw;
     border-radius: 30px;
-    background: rgb(86,128,233);
-    background: radial-gradient(circle, rgba(86,128,233,0.85) 65%, rgba(125,157,238,0.6) 80%, rgba(164,186,243,0.3) 90%, rgba(255,255,255,0) 100%);
+    background: rgb(86, 128, 233);
+    background: radial-gradient(circle, rgba(86, 128, 233, 0.85) 65%, rgba(125, 157, 238, 0.6) 80%, rgba(164, 186, 243, 0.3) 90%, rgba(255, 255, 255, 0) 100%);
 }
-.smallContDark{
+
+.smallContDark {
     position: relative;
     box-sizing: border-box;
     padding: 30px;
     max-height: 85vh;
     min-height: 80vh;
-    margin:40px 4vw;
+    margin: 40px 4vw;
     width: 40vw;
     border-radius: 30px;
     background-color: rgba(26, 25, 25, 0.65);
 }
-.smallContDark>p{
+
+.smallContDark > p {
     margin-bottom: 30px;
     color: snow;
     font-size: 20px;
 }
-.smallContDark>div{
+
+.smallContDark > div {
     margin-bottom: 30px;
     color: snow;
     font-size: 20px;
 
 }
 
-.similarActivator{
-     min-height: 10px;
-     width: auto;
-     font-size: 18px;
-     padding: 10px;
-     outline: none;
-     border: none;
-     background-color: #8860D0;
-     border-radius: 20px;
-     display: flex;
-     align-items: center;
-     color: white;
+.similarActivator {
+    min-height: 10px;
+    width: auto;
+    font-size: 18px;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: #8860D0;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
     position: absolute;
     top: 90%;
     right: 2%;
- }
-.similarActivatorDark{
+}
+
+.similarActivatorDark {
     min-height: 10px;
     width: auto;
     font-size: 18px;
@@ -105,6 +114,7 @@ cursor: pointer;
     top: 90%;
     right: 2%;
 }
-.additional p{
+
+.additional p {
     margin-bottom: 30px;
 }
