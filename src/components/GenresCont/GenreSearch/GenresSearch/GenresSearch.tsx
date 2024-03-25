@@ -2,7 +2,7 @@ import React, {FC, PropsWithChildren, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 
 import css from "./GenresSearch.module.css"
-import {GenreSearch} from "../GenreSearchCont/GenreSearch";
+import {GenreSearch} from "../GenreSearch/GenreSearch";
 import {setStateType} from "../../../../types";
 import {useAppDispatch, useAppSelector} from "../../../../hooks";
 import {GenreActions} from "../../../../store";

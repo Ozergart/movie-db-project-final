@@ -4,7 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import css from './Header.module.css'
 import {Search} from "../../Search";
 import { useAppSelector} from "../../../hooks";
-import {GenresSearch} from "../../Genres";
+import {GenresSearch} from "../../GenresCont";
 import {Switcher} from "../Switcher";
 import {User} from "../User";
 import {FastSearch} from "../FastSearch";

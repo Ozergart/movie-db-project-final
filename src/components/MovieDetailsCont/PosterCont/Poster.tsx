@@ -4,7 +4,7 @@ import css from './Poster.module.css'
 import {setStateType} from "../../../types";
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {genreService, userService} from "../../../services";
-import {Genres} from "../../Genres";
+import {Genres} from "../../GenresCont";
 import {TrailerActions} from "../../../store";
 
 

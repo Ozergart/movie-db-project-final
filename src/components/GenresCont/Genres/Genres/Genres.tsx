@@ -2,7 +2,7 @@ import {FC, PropsWithChildren, useEffect, useState} from 'react';
 
 import {genreService} from "../../../../services";
 import css from './Genres.module.css'
-import {Genre} from "../GenreCont/Genre";
+import {Genre} from "../Genre/Genre";
 import { useAppSelector} from "../../../../hooks";
 
 interface IProps extends PropsWithChildren {

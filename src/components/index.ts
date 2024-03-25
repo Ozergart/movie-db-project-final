@@ -1,4 +1,4 @@
-export * from './Genres'
+export * from './GenresCont'
 export * from './HeaderCont'
 export * from './Loadings'
 export * from './MoviesCont'

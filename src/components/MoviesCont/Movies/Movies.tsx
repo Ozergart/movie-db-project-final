@@ -4,7 +4,7 @@ import {useLocation, useSearchParams} from "react-router-dom";
 import css from './Movies.module.css'
 import {useAppSelector} from "../../../hooks";
 import {Movie} from "../Movie";
-import {GenreDeleting} from "../../Genres";
+import {GenreDeleting} from "../../GenresCont";
 import {Pagination} from "../Pagination";
 import {CreatedSorting, DateSorting, Original_titleSorting, PopularitySorting, RevenueSorting} from "../../Sortings";
 

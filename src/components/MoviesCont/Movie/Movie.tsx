@@ -4,7 +4,7 @@ import {Rating, RoundedStar} from "@smastrom/react-rating";
 
 import {IMovieRes} from "../../../interfaces";
 import css from './Movie.module.css'
-import {Genres} from "../../Genres";
+import {Genres} from "../../GenresCont";
 import {useAppDispatch} from "../../../hooks";
 import {OneMovieActions} from "../../../store";
 

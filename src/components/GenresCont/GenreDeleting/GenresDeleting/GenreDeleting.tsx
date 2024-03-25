@@ -3,7 +3,7 @@ import {SetURLSearchParams} from "react-router-dom";
 
 import css from './GenreDeleting.module.css'
 import {genreService} from "../../../../services";
-import {GenreDel} from "../GenreDeleteCont/GenreDel";
+import {GenreDel} from "../GenreDelete/GenreDel";
 import {useAppSelector} from "../../../../hooks";
 
 interface IProps extends PropsWithChildren {
