@@ -65,12 +65,20 @@ const Poster: FC<IProps> = ({setTrailerTrigger}) => {
         }
         return null;
     };
+    const renderPoster = ()=>{
+        if (!poster_path){
+            return <img src="https://cdn-icons-png.flaticon.com/512/4054/4054617.png" alt="no_poster" className={css.poster}/>
+        }
+        else {
+            return <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`постер фільму ${title}`}
+                        className={css.poster}/>
+        }
+    }
     return (
         <div>
             <div className={css.posterBlock}>
                 <div className={trailer ? css.posterBlockWithTrailer : null} onClick={handleTrailerClick}>
-                    <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={`постер фільму ${title}`}
-                         className={css.poster}/>
+                    {renderPoster()}
                     {renderTrailerIcon()}
                 </div>
                 <div className={css.listBlock}>

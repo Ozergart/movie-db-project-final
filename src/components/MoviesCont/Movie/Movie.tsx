@@ -27,12 +27,21 @@ const Movie: FC<IProps> = ({movie}) => {
         dispatch(OneMovieActions.movieSetNull())
         navigate(`/movieDetails/${id}`)
     }
+    const renderPoster = ()=>{
+        if (!poster_path){
+            return<img src="https://cdn-icons-png.flaticon.com/512/4054/4054617.png" alt="no_poster"
+                        onClick={()=>detailsNavigate()}/>
+        }
+        else {
+            return <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={`постер фільму ${title}`}
+                 onClick={() => detailsNavigate()}/>
+        }
+    }
 
     let navigate = useNavigate();
     return (
         <div className={css.Movie}>
-            <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={`постер фільму ${title}`}
-                 onClick={()=>detailsNavigate()}/>
+            {renderPoster()}
             <div><Genres genre_ids={genre_ids}/></div>
             <Rating orientation={"horizontal"} value={vote_average / 2} radius={"small"} readOnly={true}
                     halfFillMode={"svg"} itemStyles={starStyle}/>
